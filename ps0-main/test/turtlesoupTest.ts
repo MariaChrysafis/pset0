@@ -93,6 +93,7 @@ describe('findPath', function() {
 
     it('can return to the origin', function() {
         const path: Array<number> = findPath([new Point(0, -20), new Point(0, 0)]);
+        console.log([180, 20, 180, 20, 0], path)
         assert.strictEqual(path.length, 5);
         assertAlmostEqual(modulo(path[0], 360), 180);
         assertAlmostEqual(path[1], 20);

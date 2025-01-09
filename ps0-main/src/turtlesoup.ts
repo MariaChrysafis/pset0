@@ -66,7 +66,25 @@ export function distance(p1: Point, p2: Point): number {
  *    and be back to its original upward heading after turn_N.
  */
 export function findPath(points: Array<Point>): Array<number> {
-    throw new Error("Implement me!");
+    function angle(point: Point) {
+        if (point.x == 0 && point.y == 0) {
+            return 90;
+        }
+        return Math.atan(point.y/point.x) * 180/Math.PI;
+    }
+    let currentPoint: Point = new Point(0, 0);
+    const initDirection: number = 90;
+    let currentDirection: number = initDirection;
+    let arr: Array<number> = new Array();
+    for (let i = 0; i < points.length; i++) {
+        let direction = angle(points[i]);
+        arr.push(currentDirection - direction); // change in direction
+        currentDirection = direction;
+        arr.push(distance(currentPoint, points[i]));
+        currentPoint = points[i];
+    }
+    arr.push(currentDirection - initDirection);
+    return arr;
 }
 
 /**
