@@ -26,7 +26,7 @@ export function drawSquare(turtle: Turtle, sideLength: number): void {
  *          in a circle of the given `radius`
  */
 export function chordLength(radius: number, angle: number): number {
-    throw new Error("implement me!");
+    return 2 * radius * Math.sin(angle/2);
 }
 
 /**
