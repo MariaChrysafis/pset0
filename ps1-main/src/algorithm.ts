@@ -114,7 +114,8 @@ export function update(card: Flashcard, answer: AnswerDifficulty, bucketMap: Map
  *          as described above, or undefined if no hint can be generated for this card.
  */
 export function getHint(card: Flashcard): string|undefined {
-    throw new Error("not implemented yet");
+    let s = card.back;
+    return '_' + s.substring(1, s.length);
 }
 
 /**
