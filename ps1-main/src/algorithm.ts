@@ -66,7 +66,15 @@ export function getBucketRange(buckets: Array<Set<Flashcard>>): Array<number> {
  *          `day` is divisible by 2^i
  */
 export function practice(day: number, buckets: Array<Set<Flashcard>>, retiredBucket: number): Array<Flashcard> {
-    throw new Error("not implemented yet");
+    let ans: Array<Flashcard> = new Array();
+    for (let i = 0; i < buckets.length; i++) {
+        if (day % Math.pow(2, i) == 0) {
+            for (const flashcards of buckets[i]) {
+                ans.push(flashcards);
+            }
+        }
+    }
+    return ans;
 }
 
 /**
