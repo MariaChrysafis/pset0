@@ -39,7 +39,15 @@ export function toBucketSets(bucketMap: Map<Flashcard, number>): Array<Set<Flash
  *          inclusive, and high - low is as small as possible
  */
 export function getBucketRange(buckets: Array<Set<Flashcard>>): Array<number> {
-    throw new Error("not implemented yet");
+    let lower = Infinity;
+    let upper = -Infinity;
+    for (let i = 0; i < buckets.length; i++) {
+        if (buckets[i].size != 0) {
+            lower = Math.min(lower, i);
+            upper = Math.max(lower,i);
+        }
+    }
+    return [lower, upper];
 }
 
 /**
