@@ -93,7 +93,13 @@ export function practice(day: number, buckets: Array<Set<Flashcard>>, retiredBuc
  * @param retiredBucket number of retired bucket. Must be an integer >= 0.
  */
 export function update(card: Flashcard, answer: AnswerDifficulty, bucketMap: Map<Flashcard, number>, retiredBucket: number): void {
-    throw new Error("not implemented yet");
+    if (answer == AnswerDifficulty.EASY) {
+        bucketMap.set(card, Math.min((bucketMap.get(card) ?? 0) + 1, retiredBucket));
+    } else if (answer == AnswerDifficulty.WRONG) {
+        bucketMap.set(card, 0);
+    } else if (answer == AnswerDifficulty.HARD) {
+        bucketMap.set(card, Math.max((bucketMap.get(card) ?? 0) - 1, 0));
+    }
 }
 
 /**
